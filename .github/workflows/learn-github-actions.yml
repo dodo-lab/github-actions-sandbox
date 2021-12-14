@@ -1,12 +1,26 @@
+# ワークフローの名前
 name: learn-github-actions
+# このワークフローのトリガーを指定
+# 'push'を指定すると、リポジトリに変更をプッシュしたり、プルリクエストをマージする度にワークフローが実行される
 on: [push]
+# このワークフローで実行される、すべてののジョブ
 jobs:
+  # ジョブ名の定義
   check-bats-version:
+    # 最新バージョンのUbuntuで動作するように、ランナーを指定
     runs-on: ubuntu-latest
+    # このジョブで実行される、すべてのステップ
+    # ネストされた各項目は、個別のアクションもしくはシェルスクリプトを記述する
     steps:
+      # usesキーワードは、指定したActionを実行する
+      # リポジトリをランナー上にチェックアウト
       - uses: actions/checkout@v2
+      # Node.js v14のインストール
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      # runキーワードは、ランナー上コマンドを実行するようジョブに指示する
+      # npmでbatsをインストール
       - run: npm install -g bats
+      # batsのバージョンを表示
       - run: bats -v
