@@ -24,3 +24,9 @@ jobs:
       - run: npm install -g bats
       # batsのバージョンを表示
       - run: bats -v
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable-workflow.yml@main
+    with:
+      username: mona
+    secrets:
+      envPAT: test-secret
