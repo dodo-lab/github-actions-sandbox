@@ -1,0 +1,13 @@
+name: Schedule workflow
+
+on:
+  schedule:
+    # 08:10と17:10に実行する
+    # cron (分[0-59] 時[0-23] 日(1-31) 月(1-12 or JAN-DEC) 曜日[0-6 or SUN-SAT])
+    - cron: '10 8,17 * * *'
+
+jobs:
+  schedule-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo schedule-job
