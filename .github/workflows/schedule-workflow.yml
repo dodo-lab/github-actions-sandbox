@@ -2,9 +2,9 @@ name: Schedule workflow
 
 on:
   schedule:
-    # 08:10と17:10に実行する
+    # 08:20と18:20に実行する（UTC指定のため、日本時間に合わせて9時間分を差し引く）
     # cron (分[0-59] 時[0-23] 日(1-31) 月(1-12 or JAN-DEC) 曜日[0-6 or SUN-SAT])
-    - cron: '10 8,17 * * *'
+    - cron: '20 9,23 * * *'
 
 jobs:
   schedule-job:
