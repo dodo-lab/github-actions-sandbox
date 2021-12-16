@@ -1,10 +1,13 @@
 name: Reusable workflow
 on:
+  # ワークフローを再利用するための宣言
   workflow_call:
+    # このワークフローを利用する側から受け取るインプット情報
     inputs:
       username:
         required: true
         type: string
+    # このワークフローを利用する側から受け取るシークレット情報
     secrets:
       envPAT:
         required: true

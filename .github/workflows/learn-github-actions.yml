@@ -24,9 +24,15 @@ jobs:
       - run: npm install -g bats
       # batsのバージョンを表示
       - run: bats -v
+  # 再利用可能なワークフローを呼び出す
   call-reusable-workflow:
+    # 再利用するワークフローファイルを指定
+    # [所有者]/[リポジトリ]/[パス]/[ファイル名]@[参照]
     uses: dodo-lab/github-actions-sandbox/.github/workflows/reusable-workflow.yml@main
+    # 再利用ワークフローへの入力(inputs)
     with:
       username: mona
+    # 再利用ワークフローへ渡すシークレット
+    # 本来はGitHubのシークレット管理機能を使うべきだが、該当ドキュメントの査読ができてないため、見られても問題ない値を設定
     secrets:
       envPAT: test-secret
