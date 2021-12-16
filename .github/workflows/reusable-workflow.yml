@@ -11,11 +11,31 @@ on:
     secrets:
       envPAT:
         required: true
+    # このワークフローのアウトプット情報
+    # ワークフローとジョブのアウトプットを紐付ける
+    outputs:
+      firstWord:
+        description: 'The first word output string'
+        value: ${{jobs.reusable_workflow_output.outputs.output1}}
+      secondWord:
+        description: 'The second word output string'
+        value: ${{jobs.reusable_workflow_output.outputs.output2}}
 
 jobs:
-  reusable_workflow_job:
+  reusable_workflow_basic:
     runs-on: ubuntu-latest
     environment: production
     steps:
       - name: Echo arguments
         run: echo username[${{inputs.username}}] token[${{secrets.envPAT}}]
+  reusable_workflow_output:
+    runs-on: ubuntu-latest
+    # ジョブとステップのアウトプットを紐付け
+    outputs:
+      output1: ${{steps.step1.outputs.firstWord}}
+      output2: ${{steps.step2.outputs.secondWord}}
+    steps:
+      - id: step1
+        run: echo "::set-output name=firstWord::hello"
+      - id: step2
+        run: echo "::set-output name=secondWord::world"

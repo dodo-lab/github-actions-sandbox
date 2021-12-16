@@ -36,3 +36,10 @@ jobs:
     # 本来はGitHubのシークレット管理機能を使うべきだが、該当ドキュメントの査読ができてないため、見られても問題ない値を設定
     secrets:
       envPAT: test-secret
+  # 再利用可能なワークフローのアウトプットを参照
+  ref-reusable-workflow-output:
+    runs-on: ubuntu-latest
+    # 'call-reusable-workflow'が完了するまで待つ
+    needs: call-reusable-workflow
+    steps:
+      - run: echo ${{needs.call-reusable-workflow.outputs.firstWord}} ${{needs.call-reusable-workflow.outputs.secondWord}}
