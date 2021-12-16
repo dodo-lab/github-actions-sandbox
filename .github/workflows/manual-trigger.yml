@@ -1,0 +1,21 @@
+name: Manually triggered workflow
+on:
+  # マニュアル実行するワークフローは、'workflow_dispatch'を指定
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'default name'
+      home:
+        description: 'location'
+        required: false
+        default: 'default home'
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Hello ${{github.event.inputs.name}}!"
+          echo "- in ${{github.event.inputs.home}}!"
