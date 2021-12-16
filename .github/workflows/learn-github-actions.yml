@@ -25,7 +25,7 @@ jobs:
       # batsのバージョンを表示
       - run: bats -v
   call-reusable-workflow:
-    uses: ./.github/workflows/reusable-workflow.yml@main
+    uses: dodo-lab/github-actions-sandbox/.github/workflows/reusable-workflow.yml@main
     with:
       username: mona
     secrets:
