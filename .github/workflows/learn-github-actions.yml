@@ -43,3 +43,19 @@ jobs:
     needs: call-reusable-workflow
     steps:
       - run: echo ${{needs.call-reusable-workflow.outputs.firstWord}} ${{needs.call-reusable-workflow.outputs.secondWord}}
+  context-info:
+    runs-on: ubuntu-latest
+    needs: check-bats-version
+    steps:
+      - name: github info
+        run: echo ${{github}}
+      - name: env info
+        run: echo ${{env}}
+      - name: job info
+        run: echo ${{job}}
+      - name: steps info
+        run: echo ${{steps}}
+      - name: runner info
+        run: echo ${{runner}}
+      - name: needs info
+        run: echo ${{needs}}
