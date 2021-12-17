@@ -20,4 +20,4 @@ jobs:
           echo "Hello ${{github.event.inputs.name}}!"
           echo "- in ${{github.event.inputs.home}}!"
       - run: echo "Are you a pro baseball player?"
-        if: ${{github.event.inputs.name == 'imaoka'}}
+        if: github.event.inputs.name == 'imaoka'
