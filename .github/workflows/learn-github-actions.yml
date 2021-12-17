@@ -48,14 +48,22 @@ jobs:
     needs: check-bats-version
     steps:
       - name: github info
-        run: echo ${{toJson(github)}}
-      - name: env info
-        run: echo ${{toJson(env)}}
+        env:
+          GITHUB_CONTEXT: ${{toJson(github)}}
+        run: echo ${GITHUB_CONTEXT}
       - name: job info
-        run: echo ${{toJson(job)}}
+        env:
+          JOB_CONTEXT: ${{toJson(job)}}
+        run: echo ${JOB_CONTEXT}
       - name: steps info
-        run: echo ${{toJson(steps)}}
+        env:
+          STEPS_CONTEXT: ${{toJson(steps)}}
+        run: echo ${STEPS_CONTEXT}
       - name: runner info
-        run: echo ${{toJson(runner)}}
+        env:
+          RUNNER_CONTEXT: ${{toJson(runner)}}
+        run: echo ${RUNNER_CONTEXT}
       - name: needs info
-        run: echo ${{toJson(needs)}}
+        env:
+          NEEDS_CONTEXT: ${{toJson(needs)}}
+        run: echo ${NEEDS_CONTEXT}
