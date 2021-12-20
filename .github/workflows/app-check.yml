@@ -12,6 +12,21 @@ on:
       - package.json
       - package-lock.json
       - tsconfig.json
+  pull_request:
+    branches:
+      - '*'
+    paths:
+      - src/**
+      - .editorconfig
+      - .eslintrc.js
+      - .prettierrc.js
+      - package.json
+      - package-lock.json
+      - tsconfig.json
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   lint:
