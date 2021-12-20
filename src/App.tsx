@@ -13,7 +13,7 @@ function App() {
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer" onClick={hoge}>
           Learn React
         </a>
-        <p>pull request test</p>
+        <p>Verify GitHub Actions on pull request</p>
       </header>
     </div>
   );
